@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    background: #efeff4;
+}
+
+.form-bar {
+    position:relative;
+    top: 115px;
+    left: 85px;
+    width:160px;
+    height:160px;
+    @media (width: 568px) {
+        top: 85px;
+        left: 115px;
+    }
+}
+canvas {
+    display: block;
+    position:absolute;
+}
+
+.form-layout {
+    position: absolute;
+    top: 314px;
+    left: 95px;
+    width: 180px;
+    text-align: left;
+    overflow: hidden;
+    @media (width: 568px) {
+        top: 95px;
+        left: 325px;
+    }
+}
+
+.form{
+    width: 320px;
+    height: 568px;
+    background: #ffffff;
+    @media (width: 568px) {
+        width: 568px;
+        height: 320px;
+    }
+}
+
+p{
+    font:300 16px Helvetica;
+}
+
+.form-layout__item {
+    position: relative;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.form-layout__item p {
+    margin: 0 0 0 69px;
+    height: 44px;
+    color: #000000;
+    font-size: 18px;
+    line-height: 44px;
+}
+
+.form-layout__item:nth-child(1) p {
+    border: 0;
+}
+
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.form-layout__input {
+
+    text-indent: 10px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 120px;
+    margin: auto;
+    width: 48px;
+    height: 30px;
+    border-radius: 32px;
+    font-family: Helvetica;
+    font-size: 16px;
+    border: 1px solid #555555;
+}
+input[type="number"]:focus {
+    outline: none;
+
+}
+#number {
+    width: 3em;
+}
+
+.form-layout__item-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 120px;
+    margin: auto;
+    width: 51px;
+    height: 31px;
+}
+
+.form-layout__item-toggle label,
+.form-layout__item-toggle i {
+    box-sizing: border-box;
+    display: block;
+    background: #555555;
+}
+
+.form-layout__item-toggle label {
+    width: 51px;
+    height: 32px;
+    border-radius: 32px;
+    transition: all 0.30s ease;
+}
+
+.form-layout__item-toggle i {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    box-shadow: 0 0 1px 0 rgba(0,0,0, 0.25),
+    0 3px 3px 0 rgba(55, 55, 55, 0.78);
+    background: #cbcbcb;
+    transition: all 0.3s cubic-bezier(0.275, -0.450, 0.725, 1.450);
+}
+
+input[type="checkbox"]:active + .form-layout__item-toggle i {
+    width: 35px;
+}
+
+input[type="checkbox"]:active + .form-layout__item-toggle label,
+input[type="checkbox"]:checked + .form-layout__item-toggle label {
+    border: 16px solid #4cd964;
+}
+
+input[type="checkbox"]:checked + .form-layout__item-toggle i {
+    left: 21px;
+    border: 2px solid white;
+    background: white;
+}
+
+input[type="checkbox"]:checked:active + .form-layout__item-toggle label {
+    border: 16px solid #555555;
+}
+
+input[type="checkbox"]:checked:active + .form-layout__item-toggle i {
+    left: 14px;
+}
