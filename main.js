@@ -1,5 +1,4 @@
 const inputElement = document.getElementById('value');
-const formLayout = document.getElementById('form');
 const el = document.getElementById('bar'); // get canvas
 const toggleAnimate = document.getElementById('toggle_animate');
 const toggleHide = document.getElementById('toggle_hide');
@@ -8,6 +7,11 @@ const ctx = canvas.getContext('2d');
 
 const yellow = '#f5ed25';
 const gray = '#efefef';
+
+const MAX_VALUE = 100;
+const MIN_VALUE = 0;
+const MATH_VALUE = Math.PI * 2;
+
 
 var options = {
     percent:  el.getAttribute('data-percent') || 1,
@@ -30,39 +34,41 @@ function hideProgress() {
         canvas.style.display = "none";
 
     } else {
-        drawCircle(gray, options.lineWidth, 200 / 100);
+        drawCircle(gray, options.lineWidth, 1);
         el.style.display = "block";
         canvas.style.display = "block";
     }
 }
 
 function limitLength() {
-    if (inputElement.value > 100) {
-        inputElement.value = inputElement.value.replace(/[0-9]$/, '');
-    }
+    var value = inputElement.value;
+    value = (value.search(/[0-9]/) !== 0) ? MIN_VALUE : value;
+    value = parseInt(value, 10);
+    value = (value < MIN_VALUE) ? MIN_VALUE : value;
+    value = (value > MAX_VALUE) ? MAX_VALUE : value;
+    inputElement.value = value;
+    updateValue();
 }
 
 function updateValue() {
     var val = inputElement.value;
-    if (val !== 0 && val > 0 && val <= 100) {
-        drawCircle(gray, options.lineWidth, 0, 2 * 100 / 100);
-    }
-    if(val === '' || val === 0) {
-        drawCircle(gray, options.lineWidth, 0, 2 * 100 / 100);
+    if (val !== 0 && val >= 0 && val <= 100) {
+        drawCircle(gray, options.lineWidth, 0, 1);
     }
     if (val !== 0 && val > 0 && val <= 100 ) {
         if(toggleAnimate.checked){
             drawAnimateBar(val)
         } else{
-            drawCircle(yellow, 8, 0, (val * 2 )/ 100);
+            drawCircle(yellow, 8, 0, (val - 1) / MAX_VALUE);
         }
     }
 }
 
 function drawAnimateBar(val) {
+
     var i = 1;
     var timerId = setInterval(function() {
-        drawCircle(yellow, 8, 0,  i * 2 / 100);
+        drawCircle(yellow, 8, 0,  i / MAX_VALUE);
         console.log(i);
         console.log(val);
         if (i === Number(val)){
@@ -74,17 +80,15 @@ function drawAnimateBar(val) {
 
 var drawCircle = function(color, lineWidth, startAngle, endAngle) {
     ctx.beginPath();
-    ctx.arc(0, 0, radius, startAngle * Math.PI, endAngle * Math.PI);
+    ctx.arc(0, 0, radius, startAngle * MATH_VALUE, endAngle * MATH_VALUE);
     ctx.strokeStyle = color;
-    ctx.lineCap = 'round'; // butt, round or square
+    ctx.lineCap = 'round';
     ctx.lineWidth = lineWidth;
     ctx.stroke();
 };
 
-
 inputElement.onkeyup = inputElement.onchange = limitLength;
-inputElement.oninput = updateValue;
-drawCircle(gray, options.lineWidth, 0, 200 / 100);
+drawCircle(gray, options.lineWidth, 0, 1);
 
 
 
