@@ -2,7 +2,7 @@
 
 Прототип блока Progress для использования в мобильных web-приложениях. Основное предназначение блока отображать процесс выполнения процессов и их прогресс выполнения.
 
- Demo - gh-pages: https://moskovchenkonastya.github.io/circle-progress-bar/main.html
+Demo - gh-pages: https://moskovchenkonastya.github.io/circle-progress-bar/main.html
 
 Результат выполнения задачи представлен в виде небольшого
 приложения с элементами управления:
