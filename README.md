@@ -7,6 +7,8 @@ Demo - gh-pages: https://moskovchenkonastya.github.io/circle-progress-bar/main.h
 Результат выполнения задачи представлен в виде небольшого
 приложения с элементами управления:
 
+![Макет](https://github.com/moskovchenkonastya/circle-progress-bar/blob/master/Screen%20Shot%202018-02-16%20at%2020.09.44.png)
+
 Value - текстовый ввод числа от 0 до 100. 
 - limitLength() - валидация значений value.
 - updateValue() - обновление данных при введении нового значения.
